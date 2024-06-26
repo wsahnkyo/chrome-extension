@@ -11,7 +11,7 @@
     {
       "js": ["scripts/content.js"],
       "matches": [
-        "https://www.csdn.net/*"
+        "<all_urls>"
       ]
     }
   ]
