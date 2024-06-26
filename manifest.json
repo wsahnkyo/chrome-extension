@@ -9,7 +9,7 @@
   },
   "content_scripts": [
     {
-      "js": ["scripts/content.js"],
+      "js": ["scripts/jquery-3.7.1.min.js","scripts/content.js"],
       "matches": [
         "<all_urls>"
       ]
