@@ -8,24 +8,35 @@ function sleep(seconds) {
 async function doSomethingAfterDelay() {
   console.log('开始');
   while (true) {
-    console.log($('#movie-loading'))
-    var loading_style = $('#movie-loading')[0].getAttribute('style');
-    console.log(loading_style)
-    await sleep(3); // 暂停3秒
-    if (loading_style == "display: none;") {
+    var loading = $('#movie-loading')[0]
+    if(!$.isEmptyObject(loading)){
+        var loading_style = loading.getAttribute('style');
+        console.log(loading_style)
+        await sleep(3); // 暂停3秒
+        if (loading_style == "display: none;") {
+          break;
+        }
+    }else{
       break;
     }
-
   }
   var aList = $('#magnet-table').find('a');
   aList.each(function () {
     console.log($(this)[0].getAttribute('href'))
   });
-
+  $.get('http://localhost:8082/asyncSend?path='+'1111', function(response) {
+    console.log('Response:', response);
+  }).fail(function(xhr, status, error) {
+      console.error('An error occurred:', status, error);
+  });
 
   console.log('结束');
 }
-doSomethingAfterDelay();
+
+$(document).ready(function(){
+  doSomethingAfterDelay();
+});
+
 
 
 
